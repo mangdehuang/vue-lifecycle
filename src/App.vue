@@ -17,7 +17,7 @@ function realDom() {
 };
 function showData(process,obj){
   console.log(process);
-  console.log('data 数据：' + obj.test)
+  console.log('data 数据：' + obj.newMsg)
   console.log('挂载的对象：')
   console.log(obj.$el)
   realDom();
@@ -34,6 +34,11 @@ export default {
       newMsg:"msg",
     }
   },
+  methods:{
+      tip:function () {
+        console.log("tip fun");
+      }
+  },
 
   /**
    * 由于app.vue是作为组件存在
@@ -41,6 +46,7 @@ export default {
    */
   beforeCreate:function () {
     console.log("beforeCreate 创建前状态----");
+//    this.tip();
 //    showData("beforeCreate",this);
     console.log("$el:" + this.$el);
     console.log("$data:" + this.$data);
@@ -50,6 +56,7 @@ export default {
   created:function () {
     console.log("created 创建完毕状态---");
 //    showData("created",this);
+    this.tip();
     console.log("$el:" + this.$el);
     console.log("$data:" + this.$data);
     console.log(this.$data);
@@ -67,7 +74,7 @@ export default {
   },
   mounted:function () {
     console.log("mounted 挂载结束后状态---");
-    showData("mounted",this);
+    showData("mounted 挂载结束后状态---",this);
     console.log("$el:" + (this.$el));
     console.log(this.$el);
     console.log("$data:" + this.$data);
@@ -76,7 +83,7 @@ export default {
   },
   beforeUpdate:function () {
     console.log("beforeupdate:更新之前---");
-    showData("beforeUpdate",this);
+    showData("beforeupdate:更新之前---",this);
     console.log("$el:" + (this.$el));
     console.log(this.$el);
     console.log("$data:" + this.$data);
@@ -85,7 +92,7 @@ export default {
   },
   updated:function () {
     console.log("updated:数据更新之后---");
-    showData("updated",this);
+    showData("updated:数据更新之后---",this);
     console.log("$el:"+ (this.$el));
     console.log(this.$el);
     console.log("$data:" + this.$data);
@@ -94,7 +101,7 @@ export default {
   },
   beforeDestroy:function () {
     console.log("beforeDestroy:数据销毁之前---");
-    showData("beforeDestroy",this);
+    showData("beforeDestroy:数据销毁之前---",this);
     console.log("$el:"+(this.$el));
     console.log(this.$el);
     console.log("$data" + this.$data);
@@ -103,7 +110,7 @@ export default {
   },
   destroyed:function () {
     console.log("destroyed:数据销毁之后 ---");
-    showData("destroyed",this);
+    showData("destroyed:数据销毁之后 ---",this);
     console.log("$el:" + (this.$el));
     console.log(this.$el);
     console.log("$data:" + this.$data);
